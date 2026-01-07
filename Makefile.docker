@@ -16,7 +16,7 @@ OBJEXT      := o
 CFLAGS      := -Wall -Ofast -std=c++14 -march=native
 
 # Include local Eigen bundled in src/Eigen
-INC         := -I$(SRCDIR)/Eigen
+INC         := -I$(SRCDIR)
 
 # Libraries
 LIB         := -lpthread -lm

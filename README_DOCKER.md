@@ -7,7 +7,7 @@ Docker provides a failsafe way to run Namics by creating a self-contained Linux 
    [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)
 
 ## Building the Image
-1. Open your terminal (Command Prompt, PowerShell, or Terminal).
+1. Open your terminal (Command Prompt, PowerShell, or Terminal). **Note:** On Windows, you may need to run your terminal as an **Administrator**.
 2. Navigate to this directory (`Namics-Classroom`).
 3. Run the following command to build the Docker image (this may take a few minutes the first time):
 

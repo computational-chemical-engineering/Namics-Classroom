@@ -1,0 +1,7 @@
+obj
+bin
+.git
+.gemini
+.vscode
+build.log
+build_output.txt
