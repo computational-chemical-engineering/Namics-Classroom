@@ -1,5 +1,15 @@
 #include "file_reader.h"
 
+#ifdef _WIN32
+#include <io.h>
+#define F_OK 0
+#ifndef access
+#define access _access
+#endif
+#else
+#include <unistd.h>
+#endif
+
 constexpr uint8_t NUM_PRO_HEADER_TOKENS = 3;
 constexpr uint8_t DENSITY_HEADER_TOKEN_INDEX = 2;
 constexpr uint8_t BOUNDARIES = 2;

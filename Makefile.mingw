@@ -13,8 +13,8 @@ OBJEXT      := o
 
 # Flags
 CFLAGS      := -Wall -Ofast -std=c++14 -march=native
-# Include local Eigen. 
-INC         := -I$(SRCDIR)/Eigen
+# Include src directory to find Eigen/Core etc.
+INC         := -I$(SRCDIR)
 
 # Libraries
 # -static links libgcc/libstdc++ statically.

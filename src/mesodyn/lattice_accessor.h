@@ -4,6 +4,7 @@
 #include "stl_typedef.h"
 
 #include <cstddef> //size_t
+#include <cstdint>
 #include <map>
 #include <functional>
 #include <sstream>

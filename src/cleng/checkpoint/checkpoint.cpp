@@ -38,7 +38,13 @@ void Checkpoint::saveCheckpoint(const vector<std::shared_ptr<SimpleNode>>& simpl
                                 Real rejected
                                 ) {
     ifstream checkpointDir(checkpoint_path);
-    if (checkpointDir.fail()) { mkdir(checkpoint_path.c_str(), 0777); }
+    if (checkpointDir.fail()) {
+#ifdef _WIN32
+        mkdir(checkpoint_path.c_str());
+#else
+        mkdir(checkpoint_path.c_str(), 0777);
+#endif
+    }
     updateCheckpointName(true);
     updateCheckpoint(simpleNodeList, MCS_done, mcs_done, accepted, rejected);
 }

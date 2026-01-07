@@ -931,7 +931,7 @@ bool System::CheckInput(int start_)
 		} else {
 			if (CalculationType=="steady_state") {cout <<" 'calculation_type : steady_state' must be combined with one or more molecules have freedom 'gradient' " << endl; return false;}
 		}
-		if (num_of_gradient_settings>0) CalculationType=="steady_state"; else CalculationType=="equilibrium";
+		if (num_of_gradient_settings>0) CalculationType="steady_state"; else CalculationType="equilibrium";
 
 
 		if (CalculationType=="steady_state") {
