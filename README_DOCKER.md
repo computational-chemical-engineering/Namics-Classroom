@@ -11,26 +11,31 @@ Docker provides a failsafe way to run Namics by creating a self-contained Linux 
 You can either download the pre-built image or build it yourself.
 
 ### Option 1: Pull from GitHub Container Registry
-Run the following command in your terminal:
+**Using the Terminal:**
+Run the following command:
 
    ```bash
    docker pull ghcr.io/computational-chemical-engineering/namics-classroom:latest
    ```
 
+**Using Docker Desktop (GUI):**
+1. Open the **Docker Desktop** application.
+2. In the top search bar, type `ghcr.io/computational-chemical-engineering/namics-classroom`.
+3. Select the image and click **Pull**.
+
 ### Option 2: Build Locally
 1. Open your terminal (Command Prompt, PowerShell, or Terminal). **Note:** On Windows, you may need to run your terminal as an **Administrator**.
 2. Navigate to this directory (`Namics-Classroom`).
-3. Run the following command to build the Docker image (this may take a few minutes the first time):
+3. Run the following command to build the Docker image:
 
    ```bash
    docker build -t namics-image .
    ```
 
 ## Running the Code
-To run the container and access the built `namics` executable, use the following command.  
-We use the `-v` flag to "mount" your current directory into the container. This means:
- - You can edit input files in your normal Windows/Mac editor.
- - The output files created by Namics will appear in your Windows/Mac folder.
+
+### Using the Terminal (Recommended)
+To run the container and access the `namics` executable, use the command corresponding to how you obtained the image. We use the `-v` flag to "mount" your current directory so that input/output files are synced with your host machine.
 
 If you **built the image locally**:
    ```bash
@@ -41,6 +46,17 @@ If you **pulled the image from GitHub**:
    ```bash
    docker run -it --rm -v .:/app ghcr.io/computational-chemical-engineering/namics-classroom:latest
    ```
+
+### Using Docker Desktop (GUI)
+1. Go to the **Images** tab in Docker Desktop.
+2. Find `namics-classroom` or `namics-image` in the list.
+3. Click the **Run** button (play icon).
+4. **Important:** Click **Optional settings**:
+   - **Host path:** Select your `Namics-Classroom` folder.
+   - **Container path:** Enter `/app`.
+   - **Interactive & TTY (-it):** Ensure this is enabled if prompted, or use the terminal approach for better control.
+5. Click **Run**.
+6. Go to the **Containers** tab, select your running container, and click the **Terminal** tab to start using `./bin/namics`.
 
 Once inside the container prompt (which looks like `root@xxxx:/app#`), you can run the program:
 
