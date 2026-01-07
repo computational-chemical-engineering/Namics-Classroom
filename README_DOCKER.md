@@ -10,17 +10,17 @@ Docker provides a failsafe way to run Namics by creating a self-contained Linux 
 
 You can either download the pre-built image or build it yourself.
 
-### Option 1: Pull from GitHub Container Registry
+### Option 1: Pull from Docker Hub (Recommended)
 **Using the Terminal:**
 Run the following command:
 
    ```bash
-   docker pull ghcr.io/computational-chemical-engineering/namics-classroom:latest
+   docker pull eajfpeters/namics-classroom:latest
    ```
 
 **Using Docker Desktop (GUI):**
 1. Open the **Docker Desktop** application.
-2. In the top search bar, type `ghcr.io/computational-chemical-engineering/namics-classroom`.
+2. In the top search bar, type `eajfpeters/namics-classroom`.
 3. Select the image and click **Pull**.
 
 ### Option 2: Build Locally
@@ -42,9 +42,9 @@ If you **built the image locally**:
    docker run -it --rm -v .:/app namics-image
    ```
 
-If you **pulled the image from GitHub**:
+If you **pulled the image from Docker Hub**:
    ```bash
-   docker run -it --rm -v .:/app ghcr.io/computational-chemical-engineering/namics-classroom:latest
+   docker run -it --rm -v .:/app eajfpeters/namics-classroom:latest
    ```
 
 ### Using Docker Desktop (GUI)
@@ -78,5 +78,5 @@ To remove the image later if you need to save space:
    ```bash
    docker rmi namics-image
    # or
-   docker rmi ghcr.io/computational-chemical-engineering/namics-classroom:latest
+   docker rmi eajfpeters/namics-classroom:latest
    ```
