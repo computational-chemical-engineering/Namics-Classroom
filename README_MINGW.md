@@ -1,13 +1,11 @@
 # Windows Executable
 
-You can download the latest pre-compiled `namics.exe` directly from GitHub without compiling it yourself.
+You can download the latest pre-compiled `namics.exe` directly from the **Releases** section.
 
-1.  Go to the **Actions** tab in the GitHub repository.
-2.  Click on the latest "Windows Build" workflow run.
-3.  Scroll down to the **Artifacts** section and download `namics-windows`.
-4.  Extract the zip file to get `namics.exe`.
-
-Alternatively, if a formal release has been created, check the **Releases** section on the right sidebar of the repository homepage.
+1.  Go to the [Releases Page](https://github.com/computational-chemical-engineering/Namics-Classroom/releases).
+2.  Look for the **Nightly Build** (or the latest versioned release).
+3.  Expand the **Assets** section if needed.
+4.  Download `namics.exe`.
 
 # Compilation Instructions for MinGW UCRT64 (Windows)
 
