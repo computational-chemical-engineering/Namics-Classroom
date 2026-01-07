@@ -13,7 +13,7 @@ OBJEXT      := o
 
 # Flags
 # -static is omitted for Docker to keep it simple, but can be added if you want to copy the binary out.
-CFLAGS      := -Wall -Ofast -std=c++14 -march=native
+CFLAGS      := -Wall -Ofast -std=c++14
 
 # Include local Eigen bundled in src/Eigen
 INC         := -I$(SRCDIR)
