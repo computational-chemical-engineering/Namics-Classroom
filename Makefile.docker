@@ -1,0 +1,51 @@
+# Compiler
+CC          := g++
+
+# Target (Linux binary, no .exe)
+TARGET      := namics
+
+# Directories
+SRCDIR      := src
+BUILDDIR    := obj
+TARGETDIR   := bin
+SRCEXT      := cpp
+OBJEXT      := o
+
+# Flags
+# -static is omitted for Docker to keep it simple, but can be added if you want to copy the binary out.
+CFLAGS      := -Wall -Ofast -std=c++14 -march=native
+
+# Include local Eigen bundled in src/Eigen
+INC         := -I$(SRCDIR)/Eigen
+
+# Libraries
+LIB         := -lpthread -lm
+
+# Recursive wildcard function to find all sources
+rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
+
+SOURCES     := $(call rwildcard,$(SRCDIR),*.$(SRCEXT))
+OBJECTS     := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT)))
+
+# Default target
+all: directories $(TARGET)
+
+# Directories
+directories:
+	@mkdir -p $(TARGETDIR)
+	@mkdir -p $(BUILDDIR)
+
+# Clean
+clean:
+	@rm -rf $(BUILDDIR) $(TARGETDIR)
+
+# Link
+$(TARGET): $(OBJECTS)
+	$(CC) -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
+
+# Compile
+$(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+
+.PHONY: all clean directories

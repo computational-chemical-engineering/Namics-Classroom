@@ -3,7 +3,7 @@
 
 #include "stl_typedef.h"
 
-#include <unistd.h> //size_t
+#include <cstddef> //size_t
 #include <map>
 #include <functional>
 #include <sstream>

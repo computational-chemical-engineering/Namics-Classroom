@@ -1,0 +1,50 @@
+# Compiler
+CC          := g++
+
+# Target
+TARGET      := namics.exe
+
+# Directories
+SRCDIR      := src
+BUILDDIR    := obj
+TARGETDIR   := bin
+SRCEXT      := cpp
+OBJEXT      := o
+
+# Flags
+CFLAGS      := -Wall -Ofast -std=c++14 -march=native
+# Include local Eigen. 
+INC         := -I$(SRCDIR)/Eigen
+
+# Libraries
+# -static links libgcc/libstdc++ statically.
+LIB         := -static -lstdc++ -lpthread -lm
+
+# Recursive wildcard function to find all sources
+rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
+
+SOURCES     := $(call rwildcard,$(SRCDIR),*.$(SRCEXT))
+OBJECTS     := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT)))
+
+# Default target
+all: directories $(TARGET)
+
+# Directories
+directories:
+	@mkdir -p $(TARGETDIR)
+	@mkdir -p $(BUILDDIR)
+
+# Clean
+clean:
+	rm -rf $(BUILDDIR) $(TARGETDIR)
+
+# Link
+$(TARGET): $(OBJECTS)
+	$(CC) -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
+
+# Compile
+$(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+
+.PHONY: all clean directories

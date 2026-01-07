@@ -10,7 +10,6 @@
 #include <iostream>
 #include <algorithm>
 #include <sstream>
-#include <unistd.h>
 #include <memory>
 #include <cassert>
 #include <cstdlib>

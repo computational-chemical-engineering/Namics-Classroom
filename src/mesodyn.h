@@ -12,7 +12,13 @@
 #include <algorithm>  // transform, copy, find functions
 #include <limits>     // output
 #include <sstream>
+#ifdef _WIN32
+#include <io.h>
+#define access _access
+#define F_OK 0
+#else
 #include <unistd.h>   // output
+#endif
 #include <memory>
 #include <thread>
 #include <iterator>
