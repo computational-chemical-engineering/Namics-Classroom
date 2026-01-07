@@ -34,13 +34,7 @@ jobs:
         path: bin/namics.exe
         retention-days: 5
 
-    # 2. Update "Nightly" Release (Runs on push to main branches)
-    - name: Update Nightly Release
-      if: github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')
-      uses: andymckay/append-asset-action@v2 # This is a placeholder logic, using a more robust standard below
-      continue-on-error: true # Skip if logic below is preferred
-      run: echo "Switching to standard release action for nightly"
-
+    # 2. Publish Nightly Release (Runs on push to main branches)
     - name: Publish Nightly Release
       if: github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')
       uses: softprops/action-gh-release@v1
