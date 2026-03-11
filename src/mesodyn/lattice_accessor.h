@@ -9,6 +9,7 @@
 #include <functional>
 #include <sstream>
 #include <vector>
+#include <cstdint>
 
 class Lattice;
 class Lattice_accessor;
